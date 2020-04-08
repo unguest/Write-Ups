@@ -190,7 +190,7 @@ papa:$1$ORU43el1$tgY7epqx64xDbXvvaSEnu.:18277:0:99999:7:::
 I used John The Ripper (as I get used to it) and the command looks something like this : 
 
 ```
-john --format=sha521crypt papa.hash
+john --format=sha521crypt -w /usr/share/wordlists/rockyou.txt papa.hash
 ```
 And there you are : Root password is owned !
 

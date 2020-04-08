@@ -1,6 +1,8 @@
 # The Code Caper - Write-Up by unguest
 This write-up may be intended only for those who already finished this box. However, you can have a quick look at it if you're totally lost.
 
+This box can be found at (login required) : https://tryhackme.com/room/thecodcaper
+
 ## I - Host enumeration
 For this part, I'm using this command : 
 ```bash

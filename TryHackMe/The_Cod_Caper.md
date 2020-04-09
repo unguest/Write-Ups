@@ -1,4 +1,4 @@
-# The Code Caper - Write-Up by unguest
+# The Code Caper - Write-Up
 This write-up may be intended only for those who already finished this box. However, you can have a quick look at it if you're totally lost.
 
 This box can be found at (login required) : https://tryhackme.com/room/thecodcaper
